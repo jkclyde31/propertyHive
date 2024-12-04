@@ -1,9 +1,12 @@
 
-import properties from "@/properties.json"
+import connectDB from "@/config/database";
 import PropertyCard from "./PropertyCard";
+import Property from "@/models/Property";
 
 
 const HomeProperties = async () => {
+  await connectDB();
+  const recentProperties = await Property.find({}).sort({createdAt:-1}).limit(3).lean();
 
   return (
     <>
@@ -13,10 +16,10 @@ const HomeProperties = async () => {
             Recent Properties
           </h2>
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
-            {properties.length === 0 ? (
+            {recentProperties.length === 0 ? (
               <p>No Properties Found</p>
             ) : (
-              properties.map((property) => (
+              recentProperties.map((property) => (
                 <PropertyCard key={property._id} property={property} />
               ))
             )}
@@ -24,14 +27,7 @@ const HomeProperties = async () => {
         </div>
       </section>
 
-      {/* <section className='m-auto max-w-lg my-10 px-6'>
-        <Link
-          href='/properties'
-          className='block bg-black text-white text-center py-4 px-6 rounded-xl hover:bg-gray-700'
-        >
-          View All Properties
-        </Link>
-      </section> */}
+
     </>
   );
 };
