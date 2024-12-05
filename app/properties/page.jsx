@@ -1,13 +1,10 @@
-import PropertyCard from '../components/PropertyCard';
+import PropertyCard from '@/components/PropertyCard';
 import Property from '@/models/Property';
 import connectDB from '@/config/database';
 
 const PropertiesPage = async () => {
   await connectDB();
   const properties = await Property.find({}).lean();
-
-
-
   return (
     <>
       <section className='px-4 py-6'>
@@ -22,6 +19,7 @@ const PropertiesPage = async () => {
               ))}
             </div>
           )}
+
         </div>
       </section>
     </>
