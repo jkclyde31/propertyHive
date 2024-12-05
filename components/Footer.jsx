@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import logo from '@/public/images/logo.png';
+import Link from 'next/link';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -13,10 +14,10 @@ const Footer = () => {
         <div className='flex flex-wrap justify-center md:justify-start mb-4 md:mb-0'>
           <ul className='flex space-x-4'>
             <li>
-              <a href='/properties'>Properties</a>
+              <Link href='/properties'>Properties</Link>
             </li>
             <li>
-              <a href='/terms'>Terms of Service</a>
+              <Link href='/terms'>Terms of Service</Link>
             </li>
           </ul>
         </div>
