@@ -6,12 +6,12 @@ import Property from "@/models/Property";
 
 const HomeProperties = async () => {
   await connectDB();
-  // const recentProperties = await Property.find({}).sort({createdAt:-1}).limit(3).lean();
+  const recentProperties = await Property.find({}).sort({createdAt:-1}).limit(3).lean();
 
   return (
     <>
       <section className='px-4 py-6'>
-        {/* <div className='container-xl lg:container m-auto'>
+        <div className='container-xl lg:container m-auto'>
           <h2 className='text-3xl font-bold text-blue-500 mb-6 text-center'>
             Recent Properties
           </h2>
@@ -24,7 +24,7 @@ const HomeProperties = async () => {
               ))
             )}
           </div>
-        </div> */}
+        </div>
       </section>
 
 
