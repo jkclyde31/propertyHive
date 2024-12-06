@@ -1,6 +1,7 @@
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import AuthProvider from "@/components/AuthProvider";
 
 
 
@@ -12,6 +13,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    <AuthProvider>
     <html lang="en">
       <body className={`antialiased`}>
         <Navbar/>
@@ -19,5 +21,6 @@ export default function RootLayout({ children }) {
         <Footer/>
       </body>
     </html>
+    </AuthProvider>
   );
 }
